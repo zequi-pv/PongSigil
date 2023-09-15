@@ -1,11 +1,12 @@
 #pragma once
-#include "raylib.h"
 #include "Ball.h"
 
 struct Pad
 {
-    Vector2 Position;
-    Vector2 Size;
+    double x;
+    double y;
+    double width;
+    double height;
     int score = 0;
     int minPosition;
     int maxPosition;

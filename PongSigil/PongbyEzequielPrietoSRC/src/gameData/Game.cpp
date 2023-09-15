@@ -87,6 +87,7 @@ void runGame()
                 break;
             case RULES:
                 if (slGetKey(SL_KEY_ENTER))
+
                 {
                     currentScreen = GameScreen::RULES;
                 }
@@ -135,7 +136,7 @@ void runGame()
         switch (currentScreen)
         {
         case MENU:
-            ClearBackground(BLACK);
+            slSetBackColor(0.0,0.0,0.0);
             DrawText("Made by Ezequiel Prieto", 10.0f, 430.0f, 20.0f, WHITE);
             DrawText("SUPER CHAMPION PONG", GetScreenWidth() / 2.0f - 250.0f, 50.0f, 40.0f, WHITE);
             DrawText("SINGLE PLAYER", GetScreenWidth() / 2.0f - 40.0f, 150.0f, 20.0f, WHITE);
@@ -163,15 +164,15 @@ void runGame()
             }
             break;
         case SINGLEPLAYER:
-            ClearBackground(DARKGREEN);
+            slSetBackColor(0.0, 0.600, 0.0);
             drawGame(ball, rectangle1, rectangle2, middleRectangle);
             break;
         case MULTIPLAYER:
-            ClearBackground(DARKGREEN);
+            slSetBackColor(0.0, 0.600, 0.0);
             drawGame(ball, rectangle1, rectangle2, middleRectangle);
             break;
         case RULES:
-            ClearBackground(BLACK);
+            slSetBackColor(0.0, 0.0, 0.0);
             DrawText("• Player 1 has to move the left pad up and down with the a and s keys.", 20, 20, 20, WHITE);
             DrawText("• Player 2 has to move the right pad up and down with the up and", 20, 40, 20, WHITE);
             DrawText("   down keys.", 20, 60, 20, WHITE);
@@ -179,7 +180,7 @@ void runGame()
             DrawText("To return to the menu press enter.", 20, 120, 20, WHITE);
             break;
         case EXIT:
-            ClearBackground(BLACK);
+            slSetBackColor(0.0, 0.0, 0.0);
             DrawText("Do you want to exit? If yes press enter, if no press backspace", 20, 40, 20, WHITE);
             break;
         default:
@@ -190,6 +191,18 @@ void runGame()
     }
 
     close();
+}
+
+int GetScreenWidth()
+{
+    const int screenWidth = 800;
+    return screenWidth;
+}
+
+int GetScreenHeight()
+{
+    const int screenHeight = 450;
+    return screenHeight;
 }
 
 void ResetGame(Pad& rectangle1, Pad& rectangle2, Ball& ball)
@@ -203,7 +216,7 @@ void ResetGame(Pad& rectangle1, Pad& rectangle2, Ball& ball)
 
 void returnToMenu(GameScreen& currentScreen, Pad& rectangle1, Pad& rectangle2, Ball& ball)
 {
-    if (IsKeyPressed(KEY_ESCAPE))
+    if (slGetKey(SL_KEY_ESCAPE))
     {
         currentScreen = GameScreen::MENU;
         ResetGame(rectangle1, rectangle2, ball);
@@ -214,28 +227,29 @@ void returnToMenu(GameScreen& currentScreen, Pad& rectangle1, Pad& rectangle2, B
 void ResetBall(Ball& ball)
 {
     int direction = GetRandomValue(1,4);
-    ball.Speed = { 250.0f, 250.0f };
+    ball.speedX = 250.0f;
+    ball.speedY = 250.0f;
 
-    ball.Position.x = GetScreenWidth() / 2;
-    ball.Position.y = GetScreenHeight() / 2;
+    ball.x = GetScreenWidth() / 2;
+    ball.y = GetScreenHeight() / 2;
 
     switch (direction)
     {
     case 1:
-        ball.Speed.x *= 1.0f;
-        ball.Speed.y *= -1.0f;
+        ball.speedX *= 1.0f;
+        ball.speedY *= -1.0f;
         break;
     case 2:
-        ball.Speed.x *= 1.0f;
-        ball.Speed.y *= 1.0f;
+        ball.speedX *= 1.0f;
+        ball.speedY *= 1.0f;
         break;
     case 3:
-        ball.Speed.x *= -1.0f;
-        ball.Speed.y *= 1.0f;
+        ball.speedX *= -1.0f;
+        ball.speedY *= 1.0f;
         break;
     case 4:
-        ball.Speed.x *= -1.0f;
-        ball.Speed.y *= -1.0f;
+        ball.speedX *= -1.0f;
+        ball.speedY *= -1.0f;
         break;
     default:
         break;
@@ -247,7 +261,7 @@ void init(Ball& ball, Pad& rectangle1, Pad& rectangle2, Pad& middleRectangle)
     const int screenWidth = 800;
     const int screenHeight = 450;
 
-    InitWindow(screenWidth, screenHeight, "raylib [core] example - keyboard input");
+    slWindow(screenWidth, screenHeight, "raylib [core] example - keyboard input");
 
     initBall(ball);
 
@@ -255,44 +269,57 @@ void init(Ball& ball, Pad& rectangle1, Pad& rectangle2, Pad& middleRectangle)
 
     initPad2(rectangle2);
 
-    middleRectangle.Position = { (float)screenWidth - 420, (float)screenHeight / 40 };
-    middleRectangle.Size = { (float)screenWidth / 30, (float)screenHeight - 20 };
+    middleRectangle.x = (float)screenWidth - 420;
+    middleRectangle.y = (float)screenHeight / 40;
+    middleRectangle.width = (float)screenWidth / 30;
+    middleRectangle.height = (float)screenHeight - 20;
 
 }
 
 void inputsSingle(Pad& rectangle1)
 {
-    if (IsKeyDown(KEY_W)) rectangle1.Position.y -= 250.0f * GetFrameTime();
+    if (slGetKey('W')) rectangle1.y -= 250.0f * slGetDeltaTime();
 
-    if (IsKeyDown(KEY_S)) rectangle1.Position.y += 250.0f * GetFrameTime();
+    if (slGetKey('S')) rectangle1.y += 250.0f * slGetDeltaTime();
 }
 
 void inputsMulti(Pad& rectangle1, Pad& rectangle2)
 {
-    if (IsKeyDown(KEY_W)) rectangle1.Position.y -= 250.0f * GetFrameTime();
+    if (slGetKey('W')) rectangle1.y -= 250.0f * slGetDeltaTime();
 
-    if (IsKeyDown(KEY_S)) rectangle1.Position.y += 250.0f * GetFrameTime();
+    if (slGetKey('S')) rectangle1.y += 250.0f * slGetDeltaTime();
 
-    if (IsKeyDown(KEY_UP)) rectangle2.Position.y -= 250.0f * GetFrameTime();
+    if (slGetKey(SL_KEY_UP)) rectangle2.y -= 250.0f * slGetDeltaTime();
 
-    if (IsKeyDown(KEY_DOWN)) rectangle2.Position.y += 250.0f * GetFrameTime();
+    if (slGetKey(SL_KEY_DOWN)) rectangle2.y += 250.0f * slGetDeltaTime();
 }
 
 void drawGame(Ball& ball, Pad& rectangle1, Pad& rectangle2, Pad& middleRectangle)
 {
+    slSetForeColor(1, 1, 1, 1);
+    slSetFont(slLoadFont("fonts/arial.ttf"), 20);
+    slSetTextAlign(SL_ALIGN_LEFT);
+    slSetFontSize(40);
+    slText(400, 420, const char*(rectangle1.score));
     DrawText(TextFormat("%i", rectangle1.score), 140, 45, 40, RAYWHITE);
 
     DrawText(TextFormat("%i", rectangle2.score), 650, 45, 40, RAYWHITE);
 
     DrawText("Use ESC to go back to the menu ", 20.0f, 420.0f, 20.0f, RAYWHITE);
 
-    DrawRectangleV(middleRectangle.Position, middleRectangle.Size, RAYWHITE);
+    slSetForeColor(1, 1, 1, 1);
+    slRectangleFill(middleRectangle.x, middleRectangle.y, middleRectangle.width, middleRectangle.height);
 
-    DrawRectangleGradientH(ball.Position.x, ball.Position.y, ball.Size.x, ball.Size.y, BLACK, RAYWHITE);
+    slSetForeColor(1, 1, 1, 1);
+    slRectangleFill(ball.x, ball.y, ball.width, ball.height);
 
-    DrawRectangleGradientV(rectangle1.Position.x, rectangle1.Position.y, rectangle1.Size.x, rectangle1.Size.y, RED, RAYWHITE);
+    slSetForeColor(1, 0, 0, 1);
+    slRectangleFill(rectangle1.x, rectangle1.y, rectangle1.width, rectangle1.height);
 
-    DrawRectangleGradientV(rectangle2.Position.x, rectangle2.Position.y, rectangle2.Size.x, rectangle2.Size.y, BLUE, YELLOW);
+    slSetForeColor(1, 1, 0, 0);
+    slRectangleFill(rectangle2.x, rectangle2.y, rectangle2.width, rectangle2.height);
+
+    slRender();
 }
 
 void updateSingleplayer(Ball& ball, Pad& rectangle1, Pad& rectangle2, GameScreen& currentScreen, bool& gameOver, int winPoints)
@@ -301,49 +328,49 @@ void updateSingleplayer(Ball& ball, Pad& rectangle1, Pad& rectangle2, GameScreen
     {
         inputsSingle(rectangle1);
 
-        ball.Position.x += ball.Speed.x * GetFrameTime();
-        ball.Position.y += ball.Speed.y * GetFrameTime();
+        ball.x += ball.speedX * slGetDeltaTime();
+        ball.y += ball.speedY * slGetDeltaTime();
 
-        if (ball.Position.y >= (GetScreenHeight() - ball.Size.y)) 
+        if (ball.y >= (GetScreenHeight() - ball.height)) 
         { 
-            ball.Speed.y *= -1.0f;
-            ball.Position.y = GetScreenHeight() - ball.Size.y;
+            ball.speedY *= -1.0f;
+            ball.y = GetScreenHeight() - ball.height;
         }
-        if (ball.Position.y < 0)
+        if (ball.y < 0)
         {
-            ball.Speed.y *= -1.0f;
-            ball.Position.y = 0;
+            ball.speedY *= -1.0f;
+            ball.y = 0;
         }
 
         if (isColliding(rectangle1, ball))
         {
-            ball.Position.x = rectangle1.Position.x + ball.Size.x;
-            ball.Speed.x *= -1.1f;
-            ball.Speed.y *= 1.1f;
+            ball.x = rectangle1.x + ball.width;
+            ball.speedX *= -1.1f;
+            ball.speedY *= 1.1f;
         }
 
         if (isColliding(rectangle2, ball))
         {
-            ball.Position.x = rectangle2.Position.x - ball.Size.x;
-            ball.Speed.x *= -1.1f;
-            ball.Speed.y *= 1.1f;
+            ball.x = rectangle2.x - ball.width;
+            ball.speedX *= -1.1f;
+            ball.speedY *= 1.1f;
         }
 
-        if (rectangle2.Position.y + rectangle2.Size.y / 2 > ball.Position.y)
+        if (rectangle2.y + rectangle2.height / 2 > ball.y)
         {
-            rectangle2.Position.y -= 210.0f * GetFrameTime();
+            rectangle2.y -= 210.0f * slGetDeltaTime();
         }
-        if (rectangle2.Position.y + rectangle2.Size.y / 2 <= ball.Position.y)
+        if (rectangle2.y + rectangle2.height / 2 <= ball.y)
         {
-            rectangle2.Position.y += 210.0f * GetFrameTime();
+            rectangle2.y += 210.0f * slGetDeltaTime();
         }
 
-        if (ball.Position.x + ball.Size.x / 2 >= GetScreenWidth())
+        if (ball.x + ball.width / 2 >= slGetDeltaTime())
         {
             rectangle1.score++;
             ResetBall(ball);
         }
-        if (ball.Position.x - ball.Size.x / 2 <= 0)
+        if (ball.x - ball.width / 2 <= 0)
         {
             rectangle2.score++;
             ResetBall(ball);
@@ -357,9 +384,13 @@ void updateSingleplayer(Ball& ball, Pad& rectangle1, Pad& rectangle2, GameScreen
     if (rectangle1.score == winPoints)
     {
         gameOver = true;
-        DrawText("Player 1 has won", 20, 15, 20, GREEN);
-        DrawText("Press enter to return to the menu", 420, 100, 20, WHITE);
-        if (IsKeyPressed(KEY_ENTER))
+        slSetTextAlign(SL_ALIGN_LEFT);
+        slSetForeColor(0,1,0,1);
+        slSetFontSize(20);
+        slText(20, 420, "Player 1 has won");
+        slSetForeColor(1, 1, 1, 1);
+        slText(20, 400, "Press enter to return to the menu");
+        if (slGetKey(SL_KEY_ENTER))
         {
             ResetGame(rectangle1, rectangle2, ball);
 
@@ -371,9 +402,13 @@ void updateSingleplayer(Ball& ball, Pad& rectangle1, Pad& rectangle2, GameScreen
     if (rectangle2.score == winPoints)
     {
         gameOver = true;
-        DrawText("The CPU has won", GetScreenWidth() - 200, 15, 20, GREEN);
-        DrawText("Press enter to return to the menu", 420, 100, 20, WHITE);
-        if (IsKeyPressed(KEY_ENTER))
+        slSetTextAlign(SL_ALIGN_RIGHT);
+        slSetForeColor(0, 1, 0, 1);
+        slSetFontSize(20);
+        slText(600, 420, "The CPU has won");
+        slSetForeColor(1, 1, 1, 1);
+        slText(550, 400, "Press enter to return to the menu");
+        if (slGetKey(SL_KEY_ENTER))
         {
             ResetGame(rectangle1, rectangle2, ball);
 
@@ -387,44 +422,53 @@ void updateSingleplayer(Ball& ball, Pad& rectangle1, Pad& rectangle2, GameScreen
 
 void updateMultiplayer(Ball& ball, Pad& rectangle1, Pad& rectangle2, GameScreen& currentScreen, bool& gameOver, int winPoints)
 {
-    if (!gameOver)
+   if (!gameOver)
     {
-        inputsMulti(rectangle1, rectangle2);
+        inputsSingle(rectangle1);
 
-        ball.Position.x += ball.Speed.x * GetFrameTime();
-        ball.Position.y += ball.Speed.y * GetFrameTime();
+        ball.x += ball.speedX * slGetDeltaTime();
+        ball.y += ball.speedY * slGetDeltaTime();
 
-        if (ball.Position.y >= (GetScreenHeight() - ball.Size.y))
-        {
-            ball.Speed.y *= -1.0f;
-            ball.Position.y = GetScreenHeight() - ball.Size.y;
+        if (ball.y >= (GetScreenHeight() - ball.height)) 
+        { 
+            ball.speedY *= -1.0f;
+            ball.y = GetScreenHeight() - ball.height;
         }
-        if (ball.Position.y < 0)
+        if (ball.y < 0)
         {
-            ball.Speed.y *= -1.0f;
-            ball.Position.y = 0;
+            ball.speedY *= -1.0f;
+            ball.y = 0;
         }
 
         if (isColliding(rectangle1, ball))
         {
-            ball.Position.x = rectangle1.Position.x + ball.Size.x;
-            ball.Speed.x *= -1.1f;
-            ball.Speed.y *= 1.1f;
+            ball.x = rectangle1.x + ball.width;
+            ball.speedX *= -1.1f;
+            ball.speedY *= 1.1f;
         }
 
         if (isColliding(rectangle2, ball))
         {
-            ball.Position.x = rectangle2.Position.x - ball.Size.x;
-            ball.Speed.x *= -1.1f;
-            ball.Speed.y *= 1.1f;
+            ball.x = rectangle2.x - ball.width;
+            ball.speedX *= -1.1f;
+            ball.speedY *= 1.1f;
         }
 
-        if (ball.Position.x + ball.Size.x / 2 >= GetScreenWidth())
+        if (rectangle2.y + rectangle2.height / 2 > ball.y)
+        {
+            rectangle2.y -= 210.0f * slGetDeltaTime();
+        }
+        if (rectangle2.y + rectangle2.height / 2 <= ball.y)
+        {
+            rectangle2.y += 210.0f * slGetDeltaTime();
+        }
+
+        if (ball.x + ball.width / 2 >= slGetDeltaTime())
         {
             rectangle1.score++;
             ResetBall(ball);
         }
-        if (ball.Position.x - ball.Size.x / 2 <= 0)
+        if (ball.x - ball.width / 2 <= 0)
         {
             rectangle2.score++;
             ResetBall(ball);
@@ -432,6 +476,7 @@ void updateMultiplayer(Ball& ball, Pad& rectangle1, Pad& rectangle2, GameScreen&
 
         Limit(rectangle1);
         Limit(rectangle2);
+
     }
 
     if (rectangle1.score == winPoints)
@@ -439,7 +484,7 @@ void updateMultiplayer(Ball& ball, Pad& rectangle1, Pad& rectangle2, GameScreen&
         gameOver = true;
         DrawText("Player 1 has won", 20, 15, 20, GREEN);
         DrawText("Press enter to return to the menu", 420, 100, 20, WHITE);
-        if (IsKeyPressed(KEY_ENTER))
+        if (slGetKey(SL_KEY_ENTER))
         {
             ResetGame(rectangle1, rectangle2, ball);
 
@@ -453,7 +498,7 @@ void updateMultiplayer(Ball& ball, Pad& rectangle1, Pad& rectangle2, GameScreen&
         gameOver = true;
         DrawText("Player 2 has won", GetScreenWidth() - 200, 15, 20, GREEN);
         DrawText("Press enter to return to the menu", 420, 100, 20, WHITE);
-        if (IsKeyPressed(KEY_ENTER))
+        if (slGetKey(SL_KEY_ENTER))
         {
             ResetGame(rectangle1, rectangle2, ball);
 
@@ -467,5 +512,5 @@ void updateMultiplayer(Ball& ball, Pad& rectangle1, Pad& rectangle2, GameScreen&
 
 void close()
 {
-    CloseWindow();
+    slClose();
 }

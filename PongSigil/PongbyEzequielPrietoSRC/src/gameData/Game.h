@@ -1,6 +1,7 @@
 #pragma once
-#include "raylib.h"
 
 void runGame();
+int GetScreenHeight();
+int GetScreenWidth();
 
 

@@ -1,0 +1,73 @@
+﻿  Ball.cpp
+  Pad.cpp
+C:\Users\Aula 2\PongSigil\PongSigil\PongbyEzequielPrietoSRC\src\elements\Pad.cpp(12,38): warning C4244: '=': conversión de 'double' a 'int'; posible pérdida de datos
+C:\Users\Aula 2\PongSigil\PongSigil\PongbyEzequielPrietoSRC\src\elements\Pad.cpp(23,38): warning C4244: '=': conversión de 'double' a 'int'; posible pérdida de datos
+  Game.cpp
+C:\Users\Aula 2\PongSigil\PongSigil\PongbyEzequielPrietoSRC\src\gameData\Game.cpp(39,28): error C3861: 'GetRandomValue': no se encontró el identificador
+C:\Users\Aula 2\PongSigil\PongSigil\PongbyEzequielPrietoSRC\src\gameData\Game.cpp(40,33): error C3861: 'GetRandomValue': no se encontró el identificador
+C:\Users\Aula 2\PongSigil\PongSigil\PongbyEzequielPrietoSRC\src\gameData\Game.cpp(140,71): error C2065: 'WHITE': identificador no declarado
+C:\Users\Aula 2\PongSigil\PongSigil\PongbyEzequielPrietoSRC\src\gameData\Game.cpp(140,13): error C3861: 'DrawText': no se encontró el identificador
+C:\Users\Aula 2\PongSigil\PongSigil\PongbyEzequielPrietoSRC\src\gameData\Game.cpp(141,93): error C2065: 'WHITE': identificador no declarado
+C:\Users\Aula 2\PongSigil\PongSigil\PongbyEzequielPrietoSRC\src\gameData\Game.cpp(141,13): error C3861: 'DrawText': no se encontró el identificador
+C:\Users\Aula 2\PongSigil\PongSigil\PongbyEzequielPrietoSRC\src\gameData\Game.cpp(142,87): error C2065: 'WHITE': identificador no declarado
+C:\Users\Aula 2\PongSigil\PongSigil\PongbyEzequielPrietoSRC\src\gameData\Game.cpp(142,13): error C3861: 'DrawText': no se encontró el identificador
+C:\Users\Aula 2\PongSigil\PongSigil\PongbyEzequielPrietoSRC\src\gameData\Game.cpp(143,86): error C2065: 'WHITE': identificador no declarado
+C:\Users\Aula 2\PongSigil\PongSigil\PongbyEzequielPrietoSRC\src\gameData\Game.cpp(143,13): error C3861: 'DrawText': no se encontró el identificador
+C:\Users\Aula 2\PongSigil\PongSigil\PongbyEzequielPrietoSRC\src\gameData\Game.cpp(144,79): error C2065: 'WHITE': identificador no declarado
+C:\Users\Aula 2\PongSigil\PongSigil\PongbyEzequielPrietoSRC\src\gameData\Game.cpp(144,13): error C3861: 'DrawText': no se encontró el identificador
+C:\Users\Aula 2\PongSigil\PongSigil\PongbyEzequielPrietoSRC\src\gameData\Game.cpp(145,78): error C2065: 'WHITE': identificador no declarado
+C:\Users\Aula 2\PongSigil\PongSigil\PongbyEzequielPrietoSRC\src\gameData\Game.cpp(145,13): error C3861: 'DrawText': no se encontró el identificador
+C:\Users\Aula 2\PongSigil\PongSigil\PongbyEzequielPrietoSRC\src\gameData\Game.cpp(146,74): error C2065: 'WHITE': identificador no declarado
+C:\Users\Aula 2\PongSigil\PongSigil\PongbyEzequielPrietoSRC\src\gameData\Game.cpp(146,13): error C3861: 'DrawText': no se encontró el identificador
+C:\Users\Aula 2\PongSigil\PongSigil\PongbyEzequielPrietoSRC\src\gameData\Game.cpp(147,74): error C2065: 'WHITE': identificador no declarado
+C:\Users\Aula 2\PongSigil\PongSigil\PongbyEzequielPrietoSRC\src\gameData\Game.cpp(147,13): error C3861: 'DrawText': no se encontró el identificador
+C:\Users\Aula 2\PongSigil\PongSigil\PongbyEzequielPrietoSRC\src\gameData\Game.cpp(151,91): error C2065: 'RED': identificador no declarado
+C:\Users\Aula 2\PongSigil\PongSigil\PongbyEzequielPrietoSRC\src\gameData\Game.cpp(151,17): error C3861: 'DrawText': no se encontró el identificador
+C:\Users\Aula 2\PongSigil\PongSigil\PongbyEzequielPrietoSRC\src\gameData\Game.cpp(154,90): error C2065: 'RED': identificador no declarado
+C:\Users\Aula 2\PongSigil\PongSigil\PongbyEzequielPrietoSRC\src\gameData\Game.cpp(154,17): error C3861: 'DrawText': no se encontró el identificador
+C:\Users\Aula 2\PongSigil\PongSigil\PongbyEzequielPrietoSRC\src\gameData\Game.cpp(157,83): error C2065: 'RED': identificador no declarado
+C:\Users\Aula 2\PongSigil\PongSigil\PongbyEzequielPrietoSRC\src\gameData\Game.cpp(157,17): error C3861: 'DrawText': no se encontró el identificador
+C:\Users\Aula 2\PongSigil\PongSigil\PongbyEzequielPrietoSRC\src\gameData\Game.cpp(160,82): error C2065: 'RED': identificador no declarado
+C:\Users\Aula 2\PongSigil\PongSigil\PongbyEzequielPrietoSRC\src\gameData\Game.cpp(160,17): error C3861: 'DrawText': no se encontró el identificador
+C:\Users\Aula 2\PongSigil\PongSigil\PongbyEzequielPrietoSRC\src\gameData\Game.cpp(176,110): error C2065: 'WHITE': identificador no declarado
+C:\Users\Aula 2\PongSigil\PongSigil\PongbyEzequielPrietoSRC\src\gameData\Game.cpp(176,13): error C3861: 'DrawText': no se encontró el identificador
+C:\Users\Aula 2\PongSigil\PongSigil\PongbyEzequielPrietoSRC\src\gameData\Game.cpp(177,104): error C2065: 'WHITE': identificador no declarado
+C:\Users\Aula 2\PongSigil\PongSigil\PongbyEzequielPrietoSRC\src\gameData\Game.cpp(177,13): error C3861: 'DrawText': no se encontró el identificador
+C:\Users\Aula 2\PongSigil\PongSigil\PongbyEzequielPrietoSRC\src\gameData\Game.cpp(178,51): error C2065: 'WHITE': identificador no declarado
+C:\Users\Aula 2\PongSigil\PongSigil\PongbyEzequielPrietoSRC\src\gameData\Game.cpp(178,13): error C3861: 'DrawText': no se encontró el identificador
+C:\Users\Aula 2\PongSigil\PongSigil\PongbyEzequielPrietoSRC\src\gameData\Game.cpp(179,81): error C2065: 'WHITE': identificador no declarado
+C:\Users\Aula 2\PongSigil\PongSigil\PongbyEzequielPrietoSRC\src\gameData\Game.cpp(179,13): error C3861: 'DrawText': no se encontró el identificador
+C:\Users\Aula 2\PongSigil\PongSigil\PongbyEzequielPrietoSRC\src\gameData\Game.cpp(180,73): error C2065: 'WHITE': identificador no declarado
+C:\Users\Aula 2\PongSigil\PongSigil\PongbyEzequielPrietoSRC\src\gameData\Game.cpp(180,13): error C3861: 'DrawText': no se encontró el identificador
+C:\Users\Aula 2\PongSigil\PongSigil\PongbyEzequielPrietoSRC\src\gameData\Game.cpp(184,100): error C2065: 'WHITE': identificador no declarado
+C:\Users\Aula 2\PongSigil\PongSigil\PongbyEzequielPrietoSRC\src\gameData\Game.cpp(184,13): error C3861: 'DrawText': no se encontró el identificador
+C:\Users\Aula 2\PongSigil\PongSigil\PongbyEzequielPrietoSRC\src\gameData\Game.cpp(190,9): error C3861: 'EndDrawing': no se encontró el identificador
+C:\Users\Aula 2\PongSigil\PongSigil\PongbyEzequielPrietoSRC\src\gameData\Game.cpp(229,21): error C3861: 'GetRandomValue': no se encontró el identificador
+C:\Users\Aula 2\PongSigil\PongSigil\PongbyEzequielPrietoSRC\src\gameData\Game.cpp(264,81): error C2660: 'slWindow': la función no acepta 3 argumentos
+C:\Users\Aula 2\PongSigil\PongSigil\PongbyEzequielPrietoSRC\lib\sigil-vc2015\include\sl.h(109,17): message : vea la declaración de 'slWindow'
+C:\Users\Aula 2\PongSigil\PongSigil\PongbyEzequielPrietoSRC\src\gameData\Game.cpp(299,14): error C3861: 'TextFormat': no se encontró el identificador
+C:\Users\Aula 2\PongSigil\PongSigil\PongbyEzequielPrietoSRC\src\gameData\Game.cpp(299,63): error C2065: 'RAYWHITE': identificador no declarado
+C:\Users\Aula 2\PongSigil\PongSigil\PongbyEzequielPrietoSRC\src\gameData\Game.cpp(299,5): error C3861: 'DrawText': no se encontró el identificador
+C:\Users\Aula 2\PongSigil\PongSigil\PongbyEzequielPrietoSRC\src\gameData\Game.cpp(301,14): error C3861: 'TextFormat': no se encontró el identificador
+C:\Users\Aula 2\PongSigil\PongSigil\PongbyEzequielPrietoSRC\src\gameData\Game.cpp(301,63): error C2065: 'RAYWHITE': identificador no declarado
+C:\Users\Aula 2\PongSigil\PongSigil\PongbyEzequielPrietoSRC\src\gameData\Game.cpp(301,5): error C3861: 'DrawText': no se encontró el identificador
+C:\Users\Aula 2\PongSigil\PongSigil\PongbyEzequielPrietoSRC\src\gameData\Game.cpp(303,71): error C2065: 'RAYWHITE': identificador no declarado
+C:\Users\Aula 2\PongSigil\PongSigil\PongbyEzequielPrietoSRC\src\gameData\Game.cpp(303,5): error C3861: 'DrawText': no se encontró el identificador
+C:\Users\Aula 2\PongSigil\PongSigil\PongbyEzequielPrietoSRC\src\gameData\Game.cpp(386,50): error C2065: 'GREEN': identificador no declarado
+C:\Users\Aula 2\PongSigil\PongSigil\PongbyEzequielPrietoSRC\src\gameData\Game.cpp(386,9): error C3861: 'DrawText': no se encontró el identificador
+C:\Users\Aula 2\PongSigil\PongSigil\PongbyEzequielPrietoSRC\src\gameData\Game.cpp(387,69): error C2065: 'WHITE': identificador no declarado
+C:\Users\Aula 2\PongSigil\PongSigil\PongbyEzequielPrietoSRC\src\gameData\Game.cpp(387,9): error C3861: 'DrawText': no se encontró el identificador
+C:\Users\Aula 2\PongSigil\PongSigil\PongbyEzequielPrietoSRC\src\gameData\Game.cpp(400,69): error C2065: 'GREEN': identificador no declarado
+C:\Users\Aula 2\PongSigil\PongSigil\PongbyEzequielPrietoSRC\src\gameData\Game.cpp(400,9): error C3861: 'DrawText': no se encontró el identificador
+C:\Users\Aula 2\PongSigil\PongSigil\PongbyEzequielPrietoSRC\src\gameData\Game.cpp(401,69): error C2065: 'WHITE': identificador no declarado
+C:\Users\Aula 2\PongSigil\PongSigil\PongbyEzequielPrietoSRC\src\gameData\Game.cpp(401,9): error C3861: 'DrawText': no se encontró el identificador
+C:\Users\Aula 2\PongSigil\PongSigil\PongbyEzequielPrietoSRC\src\gameData\Game.cpp(476,50): error C2065: 'GREEN': identificador no declarado
+C:\Users\Aula 2\PongSigil\PongSigil\PongbyEzequielPrietoSRC\src\gameData\Game.cpp(476,9): error C3861: 'DrawText': no se encontró el identificador
+C:\Users\Aula 2\PongSigil\PongSigil\PongbyEzequielPrietoSRC\src\gameData\Game.cpp(477,69): error C2065: 'WHITE': identificador no declarado
+C:\Users\Aula 2\PongSigil\PongSigil\PongbyEzequielPrietoSRC\src\gameData\Game.cpp(477,9): error C3861: 'DrawText': no se encontró el identificador
+C:\Users\Aula 2\PongSigil\PongSigil\PongbyEzequielPrietoSRC\src\gameData\Game.cpp(490,70): error C2065: 'GREEN': identificador no declarado
+C:\Users\Aula 2\PongSigil\PongSigil\PongbyEzequielPrietoSRC\src\gameData\Game.cpp(490,9): error C3861: 'DrawText': no se encontró el identificador
+C:\Users\Aula 2\PongSigil\PongSigil\PongbyEzequielPrietoSRC\src\gameData\Game.cpp(491,69): error C2065: 'WHITE': identificador no declarado
+C:\Users\Aula 2\PongSigil\PongSigil\PongbyEzequielPrietoSRC\src\gameData\Game.cpp(491,9): error C3861: 'DrawText': no se encontró el identificador
+  Main.cpp
+  Generando código...

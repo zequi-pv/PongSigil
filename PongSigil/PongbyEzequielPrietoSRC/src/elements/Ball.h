@@ -1,11 +1,13 @@
 #pragma once
-#include "raylib.h"
 
 struct Ball
 {
-    Vector2 Position;
-    Vector2 Speed;
-    Vector2 Size;
+    double x;
+    double y;
+    double width;
+    double height;
+    float speedY;
+    float speedX;
 };
 
 void initBall(Ball& ball);

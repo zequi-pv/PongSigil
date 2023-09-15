@@ -1,8 +1,12 @@
 #include "Ball.h"
+#include "gameData/Game.h"
 
 void initBall(Ball& ball)
 {
-    ball.Position = { GetScreenWidth() / 2.0f, GetScreenHeight() / 2.0f };
-    ball.Speed = { 250.0f, 250.0f };
-    ball.Size = {30.0f, 30.0f};
+    ball.x = GetScreenWidth() / 2.0f;
+    ball.y = GetScreenHeight() / 2.0f;
+    ball.speedX = 250.0f;
+    ball.speedY = 250.0f;
+    ball.width = 30.0f;
+    ball.height = 30.0f;
 }

@@ -1,0 +1,15 @@
+﻿  main.cpp
+main.obj : error LNK2019: símbolo externo slWindow sin resolver al que se hace referencia en la función main
+main.obj : error LNK2019: símbolo externo slClose sin resolver al que se hace referencia en la función main
+main.obj : error LNK2019: símbolo externo slShouldClose sin resolver al que se hace referencia en la función main
+main.obj : error LNK2019: símbolo externo slGetKey sin resolver al que se hace referencia en la función main
+main.obj : error LNK2019: símbolo externo slRender sin resolver al que se hace referencia en la función main
+main.obj : error LNK2019: símbolo externo slSetBackColor sin resolver al que se hace referencia en la función main
+main.obj : error LNK2019: símbolo externo slSetForeColor sin resolver al que se hace referencia en la función main
+main.obj : error LNK2019: símbolo externo slSetTextAlign sin resolver al que se hace referencia en la función main
+main.obj : error LNK2019: símbolo externo slLoadFont sin resolver al que se hace referencia en la función main
+main.obj : error LNK2019: símbolo externo slSetFont sin resolver al que se hace referencia en la función main
+main.obj : error LNK2019: símbolo externo slSetFontSize sin resolver al que se hace referencia en la función main
+main.obj : error LNK2019: símbolo externo slText sin resolver al que se hace referencia en la función main
+C:\Users\Aula 2\PongSigil\PongSigil\Ejemplo\lib\sigil-vc2015\lib\sigil.lib : warning LNK4272: el tipo de máquina de biblioteca 'x86' está en conflicto con el tipo de máquina de destino 'x64'
+C:\Users\Aula 2\PongSigil\PongSigil\Ejemplo\x64\Debug\Ejemplo.exe : fatal error LNK1120: 12 externos sin resolver

@@ -8,8 +8,8 @@ void initPad1(Pad& pad)
 	pad.y = GetScreenHeight() / 3.0f;
 	pad.width = GetScreenWidth() / 30.0f;
 	pad.height = GetScreenHeight() / 4.0f;
-	pad.minPosition = 0;
-	pad.maxPosition = GetScreenHeight() - pad.height;
+	pad.minPosition = pad.height / 2;
+	pad.maxPosition = GetScreenHeight() - pad.height / 2;
 	Limit(pad);
 }
 
@@ -19,18 +19,18 @@ void initPad2(Pad& pad)
 	pad.y = GetScreenHeight() / 3.0f;
 	pad.width = GetScreenWidth() / 30.0f;
 	pad.height = GetScreenHeight() / 4.0f;
-	pad.minPosition = 0;
-	pad.maxPosition = GetScreenHeight() - pad.height;
+	pad.minPosition = pad.height / 2;
+	pad.maxPosition = GetScreenHeight() - pad.height / 2;
 	Limit(pad);
 }
 
 void Limit(Pad& rectangle)
 {
-	if (rectangle.y <= 0)
+	if (rectangle.y - rectangle.height / 2 <= 0)
 	{
 		rectangle.y = rectangle.minPosition;
 	}
-	else if (rectangle.y + rectangle.height >= GetScreenHeight())
+	else if (rectangle.y + rectangle.height / 2 >= GetScreenHeight())
 	{
 		rectangle.y = rectangle.maxPosition;
 	}
@@ -38,9 +38,9 @@ void Limit(Pad& rectangle)
 
 bool isColliding(Pad rectangle, Ball ball)
 {
-	return rectangle.x + rectangle.width >= ball.x &&
-		rectangle.x <= ball.x + ball.width &&
-		rectangle.y + rectangle.height >= ball.y &&
-		rectangle.y <= ball.y + ball.height;
+	return rectangle.x + rectangle.width / 2 >= ball.x - ball.width / 2 &&
+		   rectangle.x - rectangle.width / 2 <= ball.x + ball.width / 2 &&
+		   rectangle.y + rectangle.height / 2 >= ball.y - ball.height / 2 &&
+		   rectangle.y - rectangle.height / 2 <= ball.y + ball.height / 2;
 }
 

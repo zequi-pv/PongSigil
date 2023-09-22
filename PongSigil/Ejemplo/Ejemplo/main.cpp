@@ -11,7 +11,7 @@ int main()
 	{
 		slSetBackColor(0.0, 0.600, 0.0);
 
-		slSetForeColor(1, 1, 1, 1);
+		slSetForeColor(0, 0, 1, 1);
 		slSetFont(slLoadFont("fonts/arial.ttf"), 20);
 		slSetTextAlign(SL_ALIGN_CENTER);
 		slSetFontSize(20);

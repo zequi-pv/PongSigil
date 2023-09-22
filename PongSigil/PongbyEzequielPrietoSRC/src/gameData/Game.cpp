@@ -3,8 +3,11 @@
 #include "sl.h"
 #include <time.h>
 #include <iostream>
+#include <string>
 #include "elements/Ball.h"
 #include "elements/Pad.h"
+
+using namespace std;
 
 enum GameScreen
 {
@@ -26,46 +29,61 @@ static void close();
 
 void runGame()
 {
+    srand(time(NULL));
     Ball ball;
     Pad rectangle1;
     Pad rectangle2;
     Pad middleRectangle;
     bool gameOver = false;
     bool Paused = false;
+    
 
     init(ball, rectangle1, rectangle2, middleRectangle);
 
-    
-    int initialDirection = GetRandomValue(1, 4);
-    int initialDirectionAgain = GetRandomValue(1,2);
+    slSetFont(slLoadFont("fonts/arial.ttf"), 20);
+
+    int initialDirection = rand() % 4 + 1;
+    int initialDirectionAgain = rand() % 2 + 1;
     int currentOption = 0;
     int firstOption = SINGLEPLAYER;
     int lastOption = EXIT;
     bool isGameRunning = true;
     int winPoints = 5;
+    float timer = 0;
+    float coolDownTime = 0.3f;
 
     GameScreen currentScreen = MENU;
 
     while (!slShouldClose() && isGameRunning)
     {
         //SetExitKey(KEY_NULL);
-
+        timer += slGetDeltaTime();
         if (slGetKey(SL_KEY_DOWN))
         {
-            currentOption++;
-            if (currentOption >= lastOption)
+            if (timer >= coolDownTime)
             {
-                currentOption = lastOption;
+                timer -= coolDownTime;
+                currentOption++;
+                if (currentOption >= lastOption)
+                {
+                    currentOption = lastOption;
+                }
             }
+            
         }
 
         if (slGetKey(SL_KEY_UP))
         {
-            currentOption--;
-            if (currentOption <= firstOption)
+            if (timer >= coolDownTime)
             {
-                currentOption = firstOption;
+                timer -= coolDownTime;
+                currentOption--;
+                if (currentOption <= firstOption)
+                {
+                    currentOption = firstOption;
+                }
             }
+            
         }
 
         switch (currentScreen)
@@ -137,31 +155,59 @@ void runGame()
         {
         case MENU:
             slSetBackColor(0.0,0.0,0.0);
-            DrawText("Made by Ezequiel Prieto", 10.0f, 430.0f, 20.0f, WHITE);
-            DrawText("SUPER CHAMPION PONG", GetScreenWidth() / 2.0f - 250.0f, 50.0f, 40.0f, WHITE);
-            DrawText("SINGLE PLAYER", GetScreenWidth() / 2.0f - 40.0f, 150.0f, 20.0f, WHITE);
-            DrawText("MULTI PLAYER", GetScreenWidth() / 2.0f - 40.0f, 200.0f, 20.0f, WHITE);
-            DrawText("RULES", GetScreenWidth() / 2.0f - 40.0f, 250.0f, 20.0f, WHITE);
-            DrawText("EXIT", GetScreenWidth() / 2.0f - 40.0f, 300.0f, 20.0f, WHITE);
-            DrawText("Use the up and down keys ", 450.0f, 270.0f, 20.0f, WHITE);
-            DrawText("to move through the menu!", 450.0f, 300.0f, 20.0f, WHITE);
+            slSetTextAlign(SL_ALIGN_CENTER);
+            
+            slSetFontSize(20);
+            slSetForeColor(1, 1, 1, 1);
+            slText(20, 20, "Made by Ezequiel Prieto");
+            slText(400, 320, "SUPER CHAMPION PONG");
+            slText(400, 290, "SINGLE PLAYER");
+            slText(400, 270, "MULTI PLAYER");
+            slText(400, 250, "RULES");
+            slText(400, 230, "EXIT");
+            slText(430, 100, "Use the up and down keys ");
+            slText(430, 70, "to move through the menu!");
+            slSetForeColor(1, 1, 1, 1);
+            
+
             switch (currentOption)
             {
-            case SINGLEPLAYER:               
-                DrawText("SINGLE PLAYER", GetScreenWidth() / 2.0f - 40.0f, 150.0f, 20.0f, RED);
+            case SINGLEPLAYER:
+                slSetTextAlign(SL_ALIGN_CENTER);
+                
+                slSetFontSize(20);
+                slSetForeColor(1, 0, 0, 1);
+                slText(400, 290, "SINGLE PLAYER");
+                //slRender();
                 break;
-            case MULTIPLAYER:               
-                DrawText("MULTI PLAYER", GetScreenWidth() / 2.0f - 40.0f, 200.0f, 20.0f, RED);
+            case MULTIPLAYER:   
+                slSetTextAlign(SL_ALIGN_CENTER);
+                
+                slSetFontSize(20);
+                slSetForeColor(1, 0, 0, 1);
+                slText(400, 270, "MULTI PLAYER");
+                //slRender();
                 break;
-            case RULES:                
-                DrawText("RULES", GetScreenWidth() / 2.0f - 40.0f, 250.0f, 20.0f, RED);
+            case RULES:  
+                slSetTextAlign(SL_ALIGN_CENTER);
+                
+                slSetFontSize(20);
+                slSetForeColor(1, 0, 0, 1);
+                slText(400, 250, "RULES");
+                //slRender();
                 break;
-            case EXIT:            
-                DrawText("EXIT", GetScreenWidth() / 2.0f - 40.0f, 300.0f, 20.0f, RED);
+            case EXIT: 
+                slSetTextAlign(SL_ALIGN_CENTER);
+                
+                slSetFontSize(20);
+                slSetForeColor(1, 0, 0, 1);
+                slText(400, 230, "EXIT");
+                //slRender();
                 break;
             default:
                 break;
             }
+            slRender();
             break;
         case SINGLEPLAYER:
             slSetBackColor(0.0, 0.600, 0.0);
@@ -173,21 +219,19 @@ void runGame()
             break;
         case RULES:
             slSetBackColor(0.0, 0.0, 0.0);
-            DrawText("• Player 1 has to move the left pad up and down with the a and s keys.", 20, 20, 20, WHITE);
-            DrawText("• Player 2 has to move the right pad up and down with the up and", 20, 40, 20, WHITE);
-            DrawText("   down keys.", 20, 60, 20, WHITE);
-            DrawText("• The first one getting five points wins.", 20, 80, 20, WHITE);
-            DrawText("To return to the menu press enter.", 20, 120, 20, WHITE);
+            //DrawText("• Player 1 has to move the left pad up and down with the a and s keys.", 20, 20, 20, WHITE);
+            //DrawText("• Player 2 has to move the right pad up and down with the up and", 20, 40, 20, WHITE);
+            //DrawText("   down keys.", 20, 60, 20, WHITE);
+            //DrawText("• The first one getting five points wins.", 20, 80, 20, WHITE);
+            //DrawText("To return to the menu press enter.", 20, 120, 20, WHITE);
             break;
         case EXIT:
             slSetBackColor(0.0, 0.0, 0.0);
-            DrawText("Do you want to exit? If yes press enter, if no press backspace", 20, 40, 20, WHITE);
+            //DrawText("Do you want to exit? If yes press enter, if no press backspace", 20, 40, 20, WHITE);
             break;
         default:
             break;
         }
-
-        EndDrawing();
     }
 
     close();
@@ -226,7 +270,7 @@ void returnToMenu(GameScreen& currentScreen, Pad& rectangle1, Pad& rectangle2, B
 
 void ResetBall(Ball& ball)
 {
-    int direction = GetRandomValue(1,4);
+    int direction = rand() % 4 + 1;
     ball.speedX = 250.0f;
     ball.speedY = 250.0f;
 
@@ -261,7 +305,7 @@ void init(Ball& ball, Pad& rectangle1, Pad& rectangle2, Pad& middleRectangle)
     const int screenWidth = 800;
     const int screenHeight = 450;
 
-    slWindow(screenWidth, screenHeight, "raylib [core] example - keyboard input");
+    slWindow(screenWidth, screenHeight, "raylib [core] example - keyboard input", false);
 
     initBall(ball);
 
@@ -272,7 +316,7 @@ void init(Ball& ball, Pad& rectangle1, Pad& rectangle2, Pad& middleRectangle)
     middleRectangle.x = (float)screenWidth - 420;
     middleRectangle.y = (float)screenHeight / 40;
     middleRectangle.width = (float)screenWidth / 30;
-    middleRectangle.height = (float)screenHeight - 20;
+    middleRectangle.height = (float)screenHeight;
 
 }
 
@@ -296,16 +340,21 @@ void inputsMulti(Pad& rectangle1, Pad& rectangle2)
 
 void drawGame(Ball& ball, Pad& rectangle1, Pad& rectangle2, Pad& middleRectangle)
 {
+    string textPoints1 = to_string(rectangle1.score);
+    string textPoints2 = to_string(rectangle2.score);
+
     slSetForeColor(1, 1, 1, 1);
-    slSetFont(slLoadFont("fonts/arial.ttf"), 20);
     slSetTextAlign(SL_ALIGN_LEFT);
+    
     slSetFontSize(40);
-    slText(400, 420, const char*(rectangle1.score));
-    DrawText(TextFormat("%i", rectangle1.score), 140, 45, 40, RAYWHITE);
+    slText(200, 420, textPoints1.c_str());
+    
+    slText(600, 420, textPoints2.c_str());
 
-    DrawText(TextFormat("%i", rectangle2.score), 650, 45, 40, RAYWHITE);
+    slText(20, 20, "Use ESC to go back to the menu");
 
-    DrawText("Use ESC to go back to the menu ", 20.0f, 420.0f, 20.0f, RAYWHITE);
+    slSetForeColor(1, 1, 1, 1);
+    slRectangleFill(GetScreenWidth() / 2, GetScreenHeight() / 2,50,50);
 
     slSetForeColor(1, 1, 1, 1);
     slRectangleFill(middleRectangle.x, middleRectangle.y, middleRectangle.width, middleRectangle.height);
@@ -316,7 +365,7 @@ void drawGame(Ball& ball, Pad& rectangle1, Pad& rectangle2, Pad& middleRectangle
     slSetForeColor(1, 0, 0, 1);
     slRectangleFill(rectangle1.x, rectangle1.y, rectangle1.width, rectangle1.height);
 
-    slSetForeColor(1, 1, 0, 0);
+    slSetForeColor(0, 0, 1, 1);
     slRectangleFill(rectangle2.x, rectangle2.y, rectangle2.width, rectangle2.height);
 
     slRender();
@@ -344,14 +393,14 @@ void updateSingleplayer(Ball& ball, Pad& rectangle1, Pad& rectangle2, GameScreen
 
         if (isColliding(rectangle1, ball))
         {
-            ball.x = rectangle1.x + ball.width;
+            ball.x = rectangle1.x + rectangle1.width / 2 + ball.width / 2;
             ball.speedX *= -1.1f;
             ball.speedY *= 1.1f;
         }
 
         if (isColliding(rectangle2, ball))
         {
-            ball.x = rectangle2.x - ball.width;
+            ball.x = rectangle2.x - rectangle2.width / 2 - ball.width / 2;
             ball.speedX *= -1.1f;
             ball.speedY *= 1.1f;
         }
@@ -365,7 +414,7 @@ void updateSingleplayer(Ball& ball, Pad& rectangle1, Pad& rectangle2, GameScreen
             rectangle2.y += 210.0f * slGetDeltaTime();
         }
 
-        if (ball.x + ball.width / 2 >= slGetDeltaTime())
+        if (ball.x + ball.width / 2 >= 800)
         {
             rectangle1.score++;
             ResetBall(ball);
@@ -386,6 +435,7 @@ void updateSingleplayer(Ball& ball, Pad& rectangle1, Pad& rectangle2, GameScreen
         gameOver = true;
         slSetTextAlign(SL_ALIGN_LEFT);
         slSetForeColor(0,1,0,1);
+        
         slSetFontSize(20);
         slText(20, 420, "Player 1 has won");
         slSetForeColor(1, 1, 1, 1);
@@ -404,6 +454,7 @@ void updateSingleplayer(Ball& ball, Pad& rectangle1, Pad& rectangle2, GameScreen
         gameOver = true;
         slSetTextAlign(SL_ALIGN_RIGHT);
         slSetForeColor(0, 1, 0, 1);
+        
         slSetFontSize(20);
         slText(600, 420, "The CPU has won");
         slSetForeColor(1, 1, 1, 1);
@@ -463,7 +514,7 @@ void updateMultiplayer(Ball& ball, Pad& rectangle1, Pad& rectangle2, GameScreen&
             rectangle2.y += 210.0f * slGetDeltaTime();
         }
 
-        if (ball.x + ball.width / 2 >= slGetDeltaTime())
+        if (ball.x + ball.width / 2 >= GetScreenWidth())
         {
             rectangle1.score++;
             ResetBall(ball);
@@ -482,8 +533,13 @@ void updateMultiplayer(Ball& ball, Pad& rectangle1, Pad& rectangle2, GameScreen&
     if (rectangle1.score == winPoints)
     {
         gameOver = true;
-        DrawText("Player 1 has won", 20, 15, 20, GREEN);
-        DrawText("Press enter to return to the menu", 420, 100, 20, WHITE);
+        slSetTextAlign(SL_ALIGN_LEFT);
+        slSetForeColor(0, 1, 0, 1);
+        
+        slSetFontSize(20);
+        slText(20, 420, "Player 1 has won");
+        slSetForeColor(1, 1, 1, 1);
+        slText(20, 400, "Press enter to return to the menu");
         if (slGetKey(SL_KEY_ENTER))
         {
             ResetGame(rectangle1, rectangle2, ball);
@@ -496,8 +552,13 @@ void updateMultiplayer(Ball& ball, Pad& rectangle1, Pad& rectangle2, GameScreen&
     if (rectangle2.score == winPoints)
     {
         gameOver = true;
-        DrawText("Player 2 has won", GetScreenWidth() - 200, 15, 20, GREEN);
-        DrawText("Press enter to return to the menu", 420, 100, 20, WHITE);
+        slSetTextAlign(SL_ALIGN_RIGHT);
+        slSetForeColor(0, 1, 0, 1);
+        
+        slSetFontSize(20);
+        slText(600, 420, "Player 2 has won");
+        slSetForeColor(1, 1, 1, 1);
+        slText(550, 400, "Press enter to return to the menu");
         if (slGetKey(SL_KEY_ENTER))
         {
             ResetGame(rectangle1, rectangle2, ball);

@@ -1,7 +1,8 @@
 ﻿  Game.cpp
-C:\Users\Aula 2\PongSigil\PongSigil\PongbyEzequielPrietoSRC\src\gameData\Game.cpp(32,15): warning C4244: 'argumento': conversión de 'time_t' a 'unsigned int'; posible pérdida de datos
-C:\Users\Aula 2\PongSigil\PongSigil\PongbyEzequielPrietoSRC\src\gameData\Game.cpp(60,34): warning C4244: '+=': conversión de 'double' a 'float'; posible pérdida de datos
-  Pong.vcxproj -> C:\Users\Aula 2\PongSigil\PongSigil\PongbyEzequielPrietoSRC\bin\Debug\Pong.exe
+C:\Users\Ezequiel\Documents\PongSigil\PongSigil\PongSigil\PongbyEzequielPrietoSRC\src\gameData\Game.cpp(32,15): warning C4244: 'argumento': conversión de 'time_t' a 'unsigned int'; posible pérdida de datos
+C:\Users\Ezequiel\Documents\PongSigil\PongSigil\PongSigil\PongbyEzequielPrietoSRC\src\gameData\Game.cpp(58,48): warning C4305: 'inicializando': truncamiento de 'double' a 'float'
+C:\Users\Ezequiel\Documents\PongSigil\PongSigil\PongSigil\PongbyEzequielPrietoSRC\src\gameData\Game.cpp(66,34): warning C4244: '+=': conversión de 'double' a 'float'; posible pérdida de datos
+  Pong.vcxproj -> C:\Users\Ezequiel\Documents\PongSigil\PongSigil\PongSigil\PongbyEzequielPrietoSRC\bin\Debug\Pong.exe
           1 archivo(s) copiado(s).
           1 archivo(s) copiado(s).
           1 archivo(s) copiado(s).

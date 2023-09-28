@@ -7,12 +7,18 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Pong", "Pong\Pong.vcxproj",
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|ARM = Debug|ARM
 		Debug|x86 = Debug|x86
+		Release|ARM = Release|ARM
 		Release|x86 = Release|x86
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{F5924C06-A441-414D-A8C4-7897F04AD1CD}.Debug|ARM.ActiveCfg = Debug|Win32
+		{F5924C06-A441-414D-A8C4-7897F04AD1CD}.Debug|ARM.Build.0 = Debug|Win32
 		{F5924C06-A441-414D-A8C4-7897F04AD1CD}.Debug|x86.ActiveCfg = Debug|Win32
 		{F5924C06-A441-414D-A8C4-7897F04AD1CD}.Debug|x86.Build.0 = Debug|Win32
+		{F5924C06-A441-414D-A8C4-7897F04AD1CD}.Release|ARM.ActiveCfg = Release|ARM
+		{F5924C06-A441-414D-A8C4-7897F04AD1CD}.Release|ARM.Build.0 = Release|ARM
 		{F5924C06-A441-414D-A8C4-7897F04AD1CD}.Release|x86.ActiveCfg = Release|Win32
 		{F5924C06-A441-414D-A8C4-7897F04AD1CD}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
